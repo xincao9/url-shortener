@@ -14,7 +14,8 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const { username, email } = req.body
   if (!username || !email) {
-    return res.status(400).json({ error: 'Missing required fields' })
+    res.status(400).json({ error: 'Missing required fields' })
+    return
   }
   try {
     await User.create({ username, email })
