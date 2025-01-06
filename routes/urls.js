@@ -11,7 +11,10 @@ router.post('/', async (req, res) => {
     return
   }
   try {
-    const url = await Url.create({ raw })
+    let url = await Url.findOne({ where: { raw } })
+    if (url === null) {
+      url = await Url.create({ raw })
+    }
     const domain = runConfig.domain
     const sid = encode(url.id)
     res.json({ s: `${domain}/urls/${sid}` })
