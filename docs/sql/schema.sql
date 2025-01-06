@@ -1,0 +1,3 @@
+CREATE
+DATABASE `url_shortener`
+/*!40100 DEFAULT CHARACTER SET utf8 */;
