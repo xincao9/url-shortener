@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const Url = require('../models/url')
+const { runConfig } = require('../config/config')
 
 router.post('/', async (req, res) => {
   const { raw } = req.body
@@ -9,8 +10,9 @@ router.post('/', async (req, res) => {
     return
   }
   try {
-    await Url.create({ raw })
-    res.json(req.body)
+    const url = await Url.create({ raw })
+    const domain = runConfig.domain
+    res.json({ s: `${domain}/urls/${url.id}` })
   } catch (err) {
     res.status(500).json({ error: err.message })
   }

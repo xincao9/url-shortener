@@ -5,7 +5,7 @@
 ## 创建短链
 
 ```
-curl -X POST -H 'content-type:application/json' 'http://localhost:3000/users' -d '{"raw": "http://baidu.com"}'
+curl -X POST -H 'content-type:application/json' 'http://localhost:3000/urls' -d '{"raw": "http://baidu.com"}'
 ```
 
 ## 使用短链
