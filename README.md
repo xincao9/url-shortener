@@ -1,15 +1,15 @@
 # url-shortener
 
-#### 短链服务
+#### URL shortening services convert long URLs into shorter, easier-to-share links. These services enhance online sharing, improve aesthetics, and offer analytics. They facilitate digital communication by making links more manageable and providing insights into user behavior.
 
-## 创建短链
+## Create
 
 ```shell
 $curl -X POST -H 'content-type:application/json' 'http://localhost:3000/urls' -d '{"raw": "http://baidu.com"}'
 {"s":"http://localhost:3000/urls/1"}
 ```
 
-## 使用短链
+## Using short links
 
 ```shell
 $curl -X GET 'http://localhost:3000/urls/1' -I
