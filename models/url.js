@@ -13,6 +13,7 @@ Url.init(
     raw: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
   },
   { sequelize, modelName: 'url' }
