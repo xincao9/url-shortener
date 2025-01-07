@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const Url = require('../models/url')
+const Statistics = require('../models/statistics')
 const { RunConfig } = require('../config/config')
 const { encode, decode } = require('../utils/base62')
 
