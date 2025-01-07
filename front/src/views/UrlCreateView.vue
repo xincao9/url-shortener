@@ -9,6 +9,13 @@ const statistics = ref({
   failures: 0,
 })
 const raw = ref('')
+const createHistory = ref([
+  {
+    id: 1,
+    raw: 'https://element-plus.org/zh-CN/component/table.html',
+    s: 'https://element-plus.org/zh-CN/component/table.html',
+  },
+])
 
 const create = async () => {
   try {
@@ -54,6 +61,16 @@ const create = async () => {
               <el-button type="primary" style="margin: auto" @click="create">新建</el-button>
             </el-form-item>
           </el-form>
+        </el-col>
+      </el-row>
+      <el-divider />
+      <el-row>
+        <el-col :span="20" :offset="2">
+          <el-table :data="createHistory">
+            <el-table-column prop="id" label="ID" />
+            <el-table-column prop="raw" label="原链" truncated />
+            <el-table-column prop="s" label="短链" />
+          </el-table>
         </el-col>
       </el-row>
     </el-main>
