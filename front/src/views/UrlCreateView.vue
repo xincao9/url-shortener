@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import axios from '../plugins/axios'
 import { useCreateHistoryStore } from '../stores/create-history'
 
@@ -64,7 +64,7 @@ const create = async () => {
       <el-divider />
       <el-row>
         <el-col :span="20" :offset="2">
-          <el-table :data="createHistory">
+          <el-table :data="createHistory" empty-text="空">
             <el-table-column prop="createTime" label="时间" />
             <el-table-column prop="raw" label="原链" truncated />
             <el-table-column prop="s" label="短链" />
