@@ -1,9 +1,9 @@
 var express = require('express')
 var router = express.Router()
 const Url = require('../models/url')
-const Statistics = require('../models/statistics')
 const { RunConfig } = require('../config/config')
 const { encode, decode } = require('../utils/base62')
+const { increment, keys } = require('../models/statistics')
 
 router.post('/', async (req, res) => {
   const { raw } = req.body
@@ -19,8 +19,10 @@ router.post('/', async (req, res) => {
     const domain = RunConfig.domain
     const sid = encode(url.id)
     res.json({ s: `${domain}/urls/${sid}` })
+    increment(keys.success)
   } catch (err) {
     res.status(500).json({ error: err.message })
+    increment(keys.failures)
   }
 })
 
@@ -34,8 +36,10 @@ router.get('/:id', async (req, res) => {
       return
     }
     res.redirect(url.raw)
+    increment(keys.usage)
   } catch (err) {
     res.status(500).json({ error: err.message })
+    increment(keys.failures)
   }
 })
 module.exports = router
