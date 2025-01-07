@@ -41,7 +41,7 @@ const create = async () => {
     <el-main>
       <el-row style="text-align: center; margin-top: 50px">
         <el-col :span="8" :offset="8">
-          <el-image style="width: 100px; height: 100px" src="url" :fit="fit" />
+          <el-image style="width: 100px; height: 100px" src="url" />
         </el-col>
       </el-row>
       <el-row style="margin-top: 20px">

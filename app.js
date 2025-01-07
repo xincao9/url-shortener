@@ -7,8 +7,14 @@ var logger = require('morgan')
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 var urlsRouter = require('./routes/urls')
+const cors = require('cors')
 
 var app = express()
+
+const corsOptions = {
+  origin: 'http://127.0.0.1:5173',
+}
+app.use(cors(corsOptions))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
