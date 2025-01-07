@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import axios from '../plugins/axios'
 import { useCreateHistoryStore } from '../stores/create-history'
+import { ElNotification } from 'element-plus'
 
 const statistics = ref({})
 const raw = ref('')
@@ -14,8 +15,10 @@ const create = async () => {
     const response = await axios.post('/urls', { raw: raw.value })
     add({ s: response.s, raw: raw.value })
     queryStatistics()
+    notification({ title: '成功', message: '创建短链成功', type: 'success' })
   } catch (error) {
     console.log(error)
+    notification({ title: '警告', message: '创建短链失败' })
   }
 }
 
@@ -24,7 +27,16 @@ const queryStatistics = async () => {
     statistics.value = await axios.get('/statistics')
   } catch (error) {
     console.log(error)
+    notification({ title: '警告', message: '获取统计数据失败' })
   }
+}
+
+const notification = ({ title = '提醒', message = '信息', type = 'warning' } = {}) => {
+  ElNotification({
+    title,
+    message,
+    type,
+  })
 }
 
 const handleSelect = (key, keyPath) => {

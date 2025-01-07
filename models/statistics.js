@@ -16,7 +16,14 @@ const get = async () => {
     if (values.length !== keys.length) {
       return resp
     }
-    ;[resp.visits, resp.usage, resp.success, resp.failures] = values
+    ;[resp.visits, resp.usage, resp.success, resp.failures] = values.map(
+      (value) => {
+        if (value === null) {
+          return 0
+        }
+        return parseInt(value, 10)
+      }
+    )
   } catch (error) {
     console.log(error)
   }
