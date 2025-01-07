@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import axios from '../plugins/axios'
+import { useCreateHistoryStore } from '../stores/create-history'
 
 const statistics = ref({
   visits: 0,
@@ -9,17 +10,14 @@ const statistics = ref({
   failures: 0,
 })
 const raw = ref('')
-const createHistory = ref([
-  {
-    id: 1,
-    raw: 'https://element-plus.org/zh-CN/component/table.html',
-    s: 'https://element-plus.org/zh-CN/component/table.html',
-  },
-])
 
+const createHistoryStore = useCreateHistoryStore()
+
+const { createHistory, add } = createHistoryStore
 const create = async () => {
   try {
     const response = await axios.post('/urls', { raw: raw.value })
+    add({ s: response.s, raw: raw.value })
     console.log(response)
   } catch (error) {
     console.log(error)
@@ -67,7 +65,7 @@ const create = async () => {
       <el-row>
         <el-col :span="20" :offset="2">
           <el-table :data="createHistory">
-            <el-table-column prop="id" label="ID" />
+            <el-table-column prop="createTime" label="时间" />
             <el-table-column prop="raw" label="原链" truncated />
             <el-table-column prop="s" label="短链" />
           </el-table>
