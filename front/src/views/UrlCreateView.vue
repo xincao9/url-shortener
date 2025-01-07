@@ -5,10 +5,10 @@ import { useCreateHistoryStore } from '../stores/create-history'
 
 const statistics = ref({})
 const raw = ref('')
-
+const activeIndex = ref(1)
 const createHistoryStore = useCreateHistoryStore()
-
 const { createHistory, add } = createHistoryStore
+
 const create = async () => {
   try {
     const response = await axios.post('/urls', { raw: raw.value })
@@ -27,12 +27,28 @@ const queryStatistics = async () => {
   }
 }
 
+const handleSelect = (key, keyPath) => {
+  console.log(key, keyPath)
+}
+
 onMounted(queryStatistics)
 </script>
 
 <template>
   <el-container>
     <el-header>
+      <el-row>
+        <el-menu mode="horizontal" :default-active="activeIndex" @select="handleSelect">
+          <el-menu-item index="1">短链生成器</el-menu-item>
+          <el-sub-menu index="2">
+            <template #title>接口说明</template>
+            <el-menu-item index="2-1">API文档</el-menu-item>
+            <el-menu-item index="2-2">私有化部署</el-menu-item>
+            <el-menu-item index="2-3">项目仓库</el-menu-item>
+          </el-sub-menu>
+          <el-menu-item index="3" disabled>企业化服务</el-menu-item>
+        </el-menu>
+      </el-row>
       <el-row style="text-align: center; margin-top: 50px">
         <el-col :span="6">
           <el-statistic title="访问量" :value="statistics.visits || 0" />
