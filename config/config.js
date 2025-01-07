@@ -14,11 +14,11 @@ const config = {
   },
 }
 
-const runConfig = config[process.env.NODE_ENV || 'development']
+const RunConfig = config[process.env.NODE_ENV || 'development']
 
-console.log(`runConfig: ${runConfig}`)
+console.log(`runConfig: ${RunConfig}`)
 
-const sequelize = new Sequelize(runConfig.mysql)
+const sequelize = new Sequelize(RunConfig.mysql)
 
 sequelize
   .authenticate()
@@ -29,4 +29,4 @@ sequelize
     console.error('Unable to connect to the database:', error)
   })
 
-module.exports = { sequelize, runConfig }
+module.exports = { sequelize, RunConfig }

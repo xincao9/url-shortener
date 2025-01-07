@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const Url = require('../models/url')
-const { runConfig } = require('../config/config')
+const { RunConfig } = require('../config/config')
 const { encode, decode } = require('../utils/base62')
 
 router.post('/', async (req, res) => {
@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     if (url === null) {
       url = await Url.create({ raw })
     }
-    const domain = runConfig.domain
+    const domain = RunConfig.domain
     const sid = encode(url.id)
     res.json({ s: `${domain}/urls/${sid}` })
   } catch (err) {
