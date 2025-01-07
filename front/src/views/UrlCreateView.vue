@@ -53,7 +53,7 @@ const create = async () => {
         <el-col :span="8" :offset="8">
           <el-form>
             <el-form-item label="链接">
-              <el-input v-model="raw" />
+              <el-input v-model="raw" clearable />
             </el-form-item>
             <el-form-item>
               <el-button type="primary" style="margin: auto" @click="create">新建</el-button>
