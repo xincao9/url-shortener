@@ -6,12 +6,16 @@ import { ElNotification } from 'element-plus'
 
 const statistics = ref({})
 const raw = ref('')
-const activeIndex = ref(1)
+const activeIndex = ref('1')
 const createHistoryStore = useCreateHistoryStore()
 const { createHistory, add } = createHistoryStore
 
 const create = async () => {
   try {
+    if (validateUrl(raw.value) === false) {
+      raw.value = ''
+      return
+    }
     const response = await axios.post('/urls', { raw: raw.value })
     add({ s: response.s, raw: raw.value })
     queryStatistics()
@@ -20,6 +24,17 @@ const create = async () => {
     console.log(error)
     notification({ title: '警告', message: '创建短链失败' })
   }
+}
+
+const validateUrl = (url) => {
+  try {
+    new URL(url)
+    return true
+  } catch (error) {
+    console.log(error)
+    notification({ title: '警告', message: '提交数据不是标准链接' })
+  }
+  return false
 }
 
 const queryStatistics = async () => {
@@ -84,7 +99,7 @@ onMounted(queryStatistics)
         </el-col>
       </el-row>
       <el-row style="margin-top: 20px">
-        <el-col :span="8" :offset="8">
+        <el-col :span="16" :offset="4">
           <el-form>
             <el-form-item label="链接">
               <el-input v-model="raw" clearable />
