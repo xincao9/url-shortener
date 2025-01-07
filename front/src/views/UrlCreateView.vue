@@ -78,7 +78,7 @@ onMounted(queryStatistics)
       </el-row>
     </el-header>
     <el-main>
-      <el-row style="text-align: center; margin-top: 50px">
+      <el-row style="text-align: center; margin-top: 70px">
         <el-col :span="8" :offset="8">
           <img style="width: 100px; height: 100px" src="@/assets/logo.svg" />
         </el-col>
