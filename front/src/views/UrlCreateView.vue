@@ -3,12 +3,7 @@ import { computed, onMounted, ref } from 'vue'
 import axios from '../plugins/axios'
 import { useCreateHistoryStore } from '../stores/create-history'
 
-const statistics = ref({
-  visits: 0,
-  usage: 0,
-  success: 0,
-  failures: 0,
-})
+const statistics = ref({})
 const raw = ref('')
 
 const createHistoryStore = useCreateHistoryStore()
@@ -40,16 +35,16 @@ onMounted(queryStatistics)
     <el-header>
       <el-row style="text-align: center; margin-top: 50px">
         <el-col :span="6">
-          <el-statistic title="访问量" :value="statistics.visits" />
+          <el-statistic title="访问量" :value="statistics.visits || 0" />
         </el-col>
         <el-col :span="6">
-          <el-statistic title="使用量" :value="statistics.usage" />
+          <el-statistic title="使用量" :value="statistics.usage || 0" />
         </el-col>
         <el-col :span="6">
-          <el-statistic title="成功量" :value="statistics.success" />
+          <el-statistic title="成功量" :value="statistics.success || 0" />
         </el-col>
         <el-col :span="6">
-          <el-statistic title="失败量" :value="statistics.failures" />
+          <el-statistic title="失败量" :value="statistics.failures || 0" />
         </el-col>
       </el-row>
     </el-header>
