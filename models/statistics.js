@@ -7,6 +7,7 @@ const keys = [
   'statistics:success',
   'statistics:failures',
 ]
+
 const [visits, usage, success, failures] = keys
 
 const get = async () => {
@@ -16,11 +17,31 @@ const get = async () => {
     if (values.length !== keys.length) {
       return resp
     }
-    ;[resp.visits, resp.usage, resp.success, resp.failures] = values
+    if (values[0] !== null) {
+      resp.visits = values[0]
+    }
+    if (values[1] !== null) {
+      resp.usage = values[1]
+    }
+    if (values[2] !== null) {
+      resp.success = values[2]
+    }
+    if (values[3] !== null) {
+      resp.failures = values[3]
+    }
   } catch (error) {
     console.log(error)
   }
   return resp
 }
 
-module.exports = { get }
+const increment = async (key) => {
+  try {
+    return await redis.incr(key)
+  } catch (error) {
+    console.log(error)
+  }
+  return 0
+}
+
+module.exports = { get, increment, keys: { visits, usage, success, failures } }
