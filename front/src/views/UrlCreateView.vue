@@ -32,6 +32,7 @@ const handleSelect = (key, keyPath) => {
 }
 
 onMounted(queryStatistics)
+// TODO 将页面的header以及统计模块组件化
 </script>
 
 <template>
