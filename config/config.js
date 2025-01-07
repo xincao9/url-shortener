@@ -1,6 +1,5 @@
 require('dotenv').config()
 
-const { Sequelize } = require('sequelize')
 const config = {
   development: {
     mysql: {
@@ -11,22 +10,12 @@ const config = {
       dialect: 'mysql',
     },
     domain: 'http://localhost:3000',
+    redis: {
+      url: 'redis://:@127.0.0.1:6379/0',
+    },
   },
 }
 
 const RunConfig = config[process.env.NODE_ENV || 'development']
 
-console.log(`runConfig: ${RunConfig}`)
-
-const sequelize = new Sequelize(RunConfig.mysql)
-
-sequelize
-  .authenticate()
-  .then((value) => {
-    console.log('Connection has been established successfully.')
-  })
-  .catch((error) => {
-    console.error('Unable to connect to the database:', error)
-  })
-
-module.exports = { sequelize, RunConfig }
+module.exports = { RunConfig }

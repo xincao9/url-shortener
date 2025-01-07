@@ -1,4 +1,3 @@
-const { INTEGER } = require('sequelize')
 const redis = require('../plugins/redis')
 
 const keys = [

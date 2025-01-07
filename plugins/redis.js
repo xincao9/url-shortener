@@ -1,5 +1,7 @@
 const Redis = require('ioredis')
 
-const redis = new Redis('redis://:@127.0.0.1:6379/0')
+const { RunConfig } = require('../config/config')
+
+const redis = new Redis(RunConfig.redis.url)
 
 module.exports = redis

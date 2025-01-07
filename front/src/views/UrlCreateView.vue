@@ -18,7 +18,7 @@ const create = async () => {
   try {
     const response = await axios.post('/urls', { raw: raw.value })
     add({ s: response.s, raw: raw.value })
-    console.log(response)
+    queryStatistics()
   } catch (error) {
     console.log(error)
   }

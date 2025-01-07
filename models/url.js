@@ -1,4 +1,4 @@
-const { sequelize } = require('../config/config')
+const sequelize = require('../plugins/sequelize')
 const { Model, DataTypes } = require('sequelize')
 
 class Url extends Model {}
