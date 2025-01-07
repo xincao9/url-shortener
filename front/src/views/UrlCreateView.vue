@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import axios from '../plugins/axios'
 import { useCreateHistoryStore } from '../stores/create-history'
 
@@ -23,6 +23,16 @@ const create = async () => {
     console.log(error)
   }
 }
+
+const queryStatistics = async () => {
+  try {
+    statistics.value = await axios.get('/statistics')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+onMounted(queryStatistics)
 </script>
 
 <template>
