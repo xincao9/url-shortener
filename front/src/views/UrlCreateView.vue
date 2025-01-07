@@ -106,7 +106,9 @@ onMounted(queryStatistics)
         </el-col>
       </el-row>
     </el-main>
-    <el-footer></el-footer>
+    <el-footer>
+      <el-divider />
+    </el-footer>
   </el-container>
 </template>
 
