@@ -124,7 +124,7 @@ onMounted(queryStatistics)
       <el-row>
         <el-col :span="20" :offset="2">
           <el-table :data="createHistory" empty-text="空">
-            <el-table-column prop="createTime" label="时间" />
+            <el-table-column prop="createTime" label="时间" width="210px" />
             <el-table-column prop="raw" label="原链" truncated />
             <el-table-column prop="s" label="短链" />
           </el-table>
