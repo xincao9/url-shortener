@@ -18,6 +18,7 @@ const create = async () => {
     }
     const response = await axios.post('/urls', { raw: raw.value })
     add({ s: response.s, raw: raw.value })
+    raw.value = ''
     queryStatistics()
     notification({ title: '成功', message: '创建短链成功', type: 'success' })
   } catch (error) {
