@@ -66,29 +66,38 @@ onMounted(queryStatistics)
   <el-container>
     <el-header>
       <el-row>
-        <el-menu mode="horizontal" :default-active="activeIndex" @select="handleSelect">
-          <el-menu-item index="1">短链生成器</el-menu-item>
-          <el-sub-menu index="2">
-            <template #title>接口说明</template>
-            <el-menu-item index="2-1">API文档</el-menu-item>
-            <el-menu-item index="2-2">私有化部署</el-menu-item>
-            <el-menu-item index="2-3">项目仓库</el-menu-item>
-          </el-sub-menu>
-          <el-menu-item index="3" disabled>企业化服务</el-menu-item>
-        </el-menu>
+        <el-col :span="24">
+          <el-menu
+            mode="horizontal"
+            :default-active="activeIndex"
+            @select="handleSelect"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b"
+          >
+            <el-menu-item index="1">短链生成器</el-menu-item>
+            <el-sub-menu index="2">
+              <template #title>接口说明</template>
+              <el-menu-item index="2-1">API文档</el-menu-item>
+              <el-menu-item index="2-2">私有化部署</el-menu-item>
+              <el-menu-item index="2-3">项目仓库</el-menu-item>
+            </el-sub-menu>
+            <el-menu-item index="3" disabled>企业化服务</el-menu-item>
+          </el-menu>
+        </el-col>
       </el-row>
       <el-row style="text-align: center; margin-top: 50px">
         <el-col :span="6">
-          <el-statistic title="访问量" :value="statistics.visits || 0" />
+          <el-statistic title="访问量" :value="statistics.visits" />
         </el-col>
         <el-col :span="6">
-          <el-statistic title="使用量" :value="statistics.usage || 0" />
+          <el-statistic title="使用量" :value="statistics.usage" />
         </el-col>
         <el-col :span="6">
-          <el-statistic title="成功量" :value="statistics.success || 0" />
+          <el-statistic title="成功量" :value="statistics.success" />
         </el-col>
         <el-col :span="6">
-          <el-statistic title="失败量" :value="statistics.failures || 0" />
+          <el-statistic title="失败量" :value="statistics.failures" />
         </el-col>
       </el-row>
     </el-header>
