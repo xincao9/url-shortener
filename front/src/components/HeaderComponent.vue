@@ -1,9 +1,33 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { watch, onMounted, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
+const route = useRoute()
 const router = useRouter()
-const activeIndex = ref('1')
+
+const path = ref(route.path)
+const activeIndex = ref('')
+
+const currentIndex = (path) => {
+  if (path === '/' || path === '') {
+    return '1'
+  } else if (path === '/f/api-doc') {
+    return '2-1'
+  }
+  return '1'
+}
+
+onMounted(() => {
+  activeIndex.value = currentIndex(route.path)
+})
+
+watch(
+  () => route.path,
+  (newPath) => {
+    activeIndex.value = currentIndex(newPath)
+  },
+)
+
 const handleSelect = (key, keyPath) => {
   if (key === '2-2') {
     window.location.href = 'https://github.com/xincao9/url-shortener'
@@ -16,7 +40,11 @@ const handleSelect = (key, keyPath) => {
     name = 'api-doc'
   }
   console.log({ key, keyPath, name })
-  router.push({ name })
+  if (name) {
+    router.push({ name })
+  } else {
+    console.log(`No route defined for menu item with key: ${key}`)
+  }
 }
 </script>
 
