@@ -8,9 +8,10 @@ const handleSelect = (key, keyPath) => {
   let name = ''
   if (key === '1') {
     name = 'url-create'
-  } else if (keyPath === '2-1') {
+  } else if (key === '2-1') {
     name = 'api-doc'
   }
+  console.log({ key, keyPath, name })
   router.push({ name })
 }
 </script>
