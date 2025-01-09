@@ -62,7 +62,7 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
   <HeaderComponent />
   <el-container>
     <el-main>
-      <StatisticsCompoent />
+      <StatisticsComponent />
       <el-row style="text-align: center; margin-top: 40px">
         <el-col :span="8" :offset="8">
           <img style="width: 100px; height: 100px" src="@/assets/logo.svg" />
