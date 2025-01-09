@@ -6,10 +6,10 @@ import { ElNotification } from 'element-plus'
 import HeaderComponent from '../components/HeaderComponent.vue'
 import StatisticsComponent from '../components/StatisticsComponent.vue'
 import FooterComponent from '../components/FooterComponent.vue'
-const raw = ref('')
-const activeIndex = ref('1')
 const createHistoryStore = useCreateHistoryStore()
 const { createHistory, add } = createHistoryStore
+
+const raw = ref('')
 
 const create = async () => {
   try {
@@ -36,6 +36,17 @@ const validateUrl = (url) => {
     notification({ title: '警告', message: '提交数据不是标准链接' })
   }
   return false
+}
+
+const copyToClipboard = (text) => {
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      notification({ title: '提醒', message: '已成功复制', type: 'success' })
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 }
 
 const notification = ({ title = '提醒', message = '信息', type = 'warning' } = {}) => {
@@ -73,9 +84,15 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
       <el-row>
         <el-col :span="20" :offset="2">
           <el-table :data="createHistory" empty-text="空">
-            <el-table-column prop="createTime" label="时间" width="210px" />
-            <el-table-column prop="raw" label="原链" truncated />
-            <el-table-column prop="s" label="短链" width="210px" />
+            <el-table-column prop="createTime" label="时间" width="210px" align="center" />
+            <el-table-column prop="raw" label="原链" truncated align="center" />
+            <el-table-column prop="s" label="短链" width="210px" align="center">
+              <template v-slot="scope">
+                <el-link type="success" @click="copyToClipboard(scope.row.s)">{{
+                  scope.row.s
+                }}</el-link>
+              </template>
+            </el-table-column>
           </el-table>
         </el-col>
       </el-row>
