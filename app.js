@@ -21,6 +21,8 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+
+app.use('/md', express.static(path.join(__dirname, 'docs/md')))
 app.use(express.static(path.join(__dirname, 'front/dist')))
 
 app.use('/s', indexRouter)

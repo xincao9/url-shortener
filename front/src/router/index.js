@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import UrlCreateView from '../views/UrlCreateView.vue'
+import ApiDocView from '../views/ApiDocView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/',
       name: 'url-create',
       component: UrlCreateView,
+    },
+    {
+      path: '/api-doc',
+      name: 'api-doc',
+      component: ApiDocView,
     },
   ],
 })
