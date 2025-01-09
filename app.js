@@ -25,6 +25,9 @@ app.use(cookieParser())
 
 app.use('/md', express.static(path.join(__dirname, 'docs/md')))
 app.use(express.static(path.join(__dirname, 'front/dist')))
+app.get('/f/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'front/dist/index.html'))
+})
 
 app.use('/s', indexRouter)
 app.use('/users', usersRouter)

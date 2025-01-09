@@ -1,9 +1,17 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const activeIndex = ref('1')
 const handleSelect = (key, keyPath) => {
-  console.log(key, keyPath)
+  let name = ''
+  if (key === '1') {
+    name = 'url-create'
+  } else if (keyPath === '2-1') {
+    name = 'api-doc'
+  }
+  router.push({ name })
 }
 </script>
 
@@ -24,8 +32,8 @@ const handleSelect = (key, keyPath) => {
             <el-sub-menu index="2">
               <template #title>接口说明</template>
               <el-menu-item index="2-1">API文档</el-menu-item>
-              <el-menu-item index="2-2">私有化部署</el-menu-item>
-              <el-menu-item index="2-3">项目仓库</el-menu-item>
+              <el-menu-item index="2-2" disabled>私有化部署</el-menu-item>
+              <el-menu-item index="2-3" disabled>项目仓库</el-menu-item>
             </el-sub-menu>
             <el-menu-item index="3" disabled>企业化服务</el-menu-item>
           </el-menu>
