@@ -1,5 +1,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
+import axios from '../plugins/axios'
+import { ElNotification } from 'element-plus'
 
 const statistics = ref({})
 
