@@ -1,5 +1,5 @@
 <template>
-  <div v-html="compiledMarkdown"></div>
+  <div style="background-color: aliceblue; padding: 10px 50px" v-html="compiledMarkdown"></div>
 </template>
 
 <script>

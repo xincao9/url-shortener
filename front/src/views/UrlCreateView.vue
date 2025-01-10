@@ -61,7 +61,7 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
 <template>
   <HeaderComponent />
   <el-container>
-    <el-main>
+    <el-main style="background-color: aliceblue">
       <StatisticsComponent />
       <el-row style="text-align: center; margin-top: 40px">
         <el-col :span="8" :offset="8">

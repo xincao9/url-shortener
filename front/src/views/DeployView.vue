@@ -3,7 +3,9 @@
   <el-container>
     <el-main>
       <el-row>
-        <MarkdownRenderer :content="content" />
+        <el-col :span="24">
+          <MarkdownRenderer :content="content" />
+        </el-col>
       </el-row>
     </el-main>
   </el-container>
