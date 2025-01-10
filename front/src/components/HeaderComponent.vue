@@ -5,7 +5,6 @@ import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
-const path = ref(route.path)
 const activeIndex = ref('')
 
 const currentIndex = (path) => {
@@ -39,7 +38,6 @@ const handleSelect = (key, keyPath) => {
   } else if (key === '2-1') {
     name = 'api-doc'
   }
-  console.log({ key, keyPath, name })
   if (name) {
     router.push({ name })
   } else {
