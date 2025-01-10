@@ -4,7 +4,6 @@ var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 
 var indexRouter = require('./routes/index')
-var usersRouter = require('./routes/users')
 var urlsRouter = require('./routes/urls')
 var statisticsRouter = require('./routes/statistics')
 
@@ -30,7 +29,6 @@ app.get('/f/*', (req, res) => {
 })
 
 app.use('/s', indexRouter)
-app.use('/users', usersRouter)
 app.use('/urls', urlsRouter)
 app.use('/statistics', statisticsRouter)
 
