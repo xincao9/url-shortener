@@ -12,6 +12,8 @@ const currentIndex = (path) => {
     return '1'
   } else if (path === '/f/api-doc') {
     return '2-1'
+  } else if (path === '/f/deploy') {
+    return '2-3'
   }
   return '1'
 }
@@ -37,6 +39,8 @@ const handleSelect = (key, keyPath) => {
     name = 'url-create'
   } else if (key === '2-1') {
     name = 'api-doc'
+  } else if (key === '2-3') {
+    name = 'deploy'
   }
   if (name) {
     router.push({ name })
@@ -64,7 +68,7 @@ const handleSelect = (key, keyPath) => {
               <template #title>接口说明</template>
               <el-menu-item index="2-1">接口文档</el-menu-item>
               <el-menu-item index="2-2">项目仓库</el-menu-item>
-              <el-menu-item index="2-3" disabled>私有化部署</el-menu-item>
+              <el-menu-item index="2-3">私有化部署</el-menu-item>
             </el-sub-menu>
             <el-menu-item index="3" disabled>企业化服务</el-menu-item>
           </el-menu>
