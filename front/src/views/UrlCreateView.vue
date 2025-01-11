@@ -61,39 +61,43 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
 <template>
   <HeaderComponent />
   <el-container>
-    <el-main style="background-color: aliceblue">
-      <StatisticsComponent />
-      <el-row style="text-align: center; margin-top: 40px">
-        <el-col :span="8" :offset="8">
-          <img style="width: 100px; height: 100px" src="@/assets/logo.svg" />
-        </el-col>
-      </el-row>
-      <el-row style="margin-top: 20px">
-        <el-col :span="16" :offset="4">
-          <el-form>
-            <el-form-item label="链接">
-              <el-input v-model="raw" clearable />
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" style="margin: auto" @click="create">新建</el-button>
-            </el-form-item>
-          </el-form>
-        </el-col>
-      </el-row>
-      <el-divider />
+    <el-main>
       <el-row>
-        <el-col :span="20" :offset="2">
-          <el-table :data="createHistory" empty-text="空">
-            <el-table-column prop="createTime" label="时间" width="210px" align="center" />
-            <el-table-column prop="raw" label="原链" truncated align="center" />
-            <el-table-column prop="s" label="短链" width="210px" align="center">
-              <template v-slot="scope">
-                <el-link type="success" @click="copyToClipboard(scope.row.s)">{{
-                  scope.row.s
-                }}</el-link>
-              </template>
-            </el-table-column>
-          </el-table>
+        <el-col :span="24" style="background-color: aliceblue">
+          <StatisticsComponent />
+          <el-row style="text-align: center; margin-top: 40px">
+            <el-col :span="8" :offset="8">
+              <img style="width: 100px; height: 100px" src="@/assets/logo.svg" />
+            </el-col>
+          </el-row>
+          <el-row style="margin-top: 20px">
+            <el-col :span="16" :offset="4">
+              <el-form>
+                <el-form-item label="链接">
+                  <el-input v-model="raw" clearable />
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary" style="margin: auto" @click="create">新建</el-button>
+                </el-form-item>
+              </el-form>
+            </el-col>
+          </el-row>
+          <el-divider />
+          <el-row>
+            <el-col :span="20" :offset="2">
+              <el-table :data="createHistory" empty-text="空">
+                <el-table-column prop="createTime" label="时间" width="210px" align="center" />
+                <el-table-column prop="raw" label="原链" truncated align="center" />
+                <el-table-column prop="s" label="短链" width="210px" align="center">
+                  <template v-slot="scope">
+                    <el-link type="success" @click="copyToClipboard(scope.row.s)">{{
+                      scope.row.s
+                    }}</el-link>
+                  </template>
+                </el-table-column>
+              </el-table>
+            </el-col>
+          </el-row>
         </el-col>
       </el-row>
     </el-main>
