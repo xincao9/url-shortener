@@ -31,7 +31,7 @@ const config = {
 #### 环境变量
 
 ```shell
-export NODE_ENV = 'production'
+export NODE_ENV='production'
 ```
 
 ### url-shortener/front/src/plugins/axios.js 修改
@@ -41,7 +41,7 @@ import axios from 'axios'
 
 const axiosInstance = axios.create({
   baseURL: 'https://${短链域名}',
-  timeout: 1000,
+  timeout: 3000,
   headers: { 'Content-Type': 'application/json' },
 })
 
