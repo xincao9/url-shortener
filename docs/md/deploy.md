@@ -67,7 +67,7 @@ CREATE TABLE `urls` (
 
 ```shell
 cd url-shortener/front #切换目录
-npm run build #构建
+npm run build #构建 TIP: 打包时确认NODE_ENV环境变量等于development
 ```
 
 ### 启动
