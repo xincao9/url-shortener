@@ -13,7 +13,7 @@ const currentIndex = (path) => {
   } else if (path === '/f/api-doc') {
     return '2-1'
   } else if (path === '/f/deploy') {
-    return '2-3'
+    return '2-2'
   }
   return '1'
 }
@@ -30,8 +30,8 @@ watch(
 )
 
 const handleSelect = (key, keyPath) => {
-  if (key === '2-2') {
-    window.location.href = 'https://github.com/xincao9/url-shortener'
+  if (key === '2-3') {
+    window.open('https://github.com/xincao9/url-shortener', '_blank')
     return
   }
   let name = ''
@@ -39,7 +39,7 @@ const handleSelect = (key, keyPath) => {
     name = 'url-create'
   } else if (key === '2-1') {
     name = 'api-doc'
-  } else if (key === '2-3') {
+  } else if (key === '2-2') {
     name = 'deploy'
   }
   if (name) {
@@ -67,8 +67,8 @@ const handleSelect = (key, keyPath) => {
             <el-sub-menu index="2">
               <template #title>接口说明</template>
               <el-menu-item index="2-1">接口文档</el-menu-item>
-              <el-menu-item index="2-2">项目仓库</el-menu-item>
-              <el-menu-item index="2-3">私有化部署</el-menu-item>
+              <el-menu-item index="2-2">私有化部署</el-menu-item>
+              <el-menu-item index="2-3">项目仓库</el-menu-item>
             </el-sub-menu>
             <el-menu-item index="3" disabled>企业化服务</el-menu-item>
           </el-menu>
