@@ -38,17 +38,6 @@ const validateUrl = (url) => {
   return false
 }
 
-const copyToClipboard = (text) => {
-  navigator.clipboard
-    .writeText(text)
-    .then(() => {
-      notification({ title: '提醒', message: '已成功复制', type: 'success' })
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-}
-
 const notification = ({ title = '提醒', message = '信息', type = 'warning' } = {}) => {
   ElNotification({
     title,
@@ -90,7 +79,7 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
                 <el-table-column prop="raw" label="原链" truncated align="center" />
                 <el-table-column prop="s" label="短链" width="210px" align="center">
                   <template v-slot="scope">
-                    <el-link type="success" @click="copyToClipboard(scope.row.s)">{{
+                    <el-link :href="scope.row.s" type="success" target="_blank">{{
                       scope.row.s
                     }}</el-link>
                   </template>
