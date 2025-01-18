@@ -61,6 +61,7 @@ const handleSelect = (key, keyPath) => {
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b"
+          :ellipsis="false"
         >
           <el-menu-item index="1">短链生成器</el-menu-item>
           <el-sub-menu index="2">
