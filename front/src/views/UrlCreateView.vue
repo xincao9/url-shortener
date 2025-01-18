@@ -48,9 +48,9 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
 </script>
 
 <template>
-  <Header />
-  <el-container>
-    <el-main>
+  <el-container class="app-container">
+    <Header />
+    <el-main class="app-main">
       <el-row>
         <el-col :span="24" style="background-color: aliceblue">
           <Statistics />
@@ -90,8 +90,18 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
         </el-col>
       </el-row>
     </el-main>
+    <Footer />
   </el-container>
-  <Footer />
 </template>
 
-<style scoped></style>
+<style scoped>
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the container takes up the full viewport height */
+}
+.app-main {
+  flex: 1; /* This makes the main content take up the remaining space */
+  overflow-y: auto; /* Enable scrolling if the content overflows */
+}
+</style>

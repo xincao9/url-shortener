@@ -1,15 +1,15 @@
 <template>
-  <Header />
-  <el-container>
-    <el-main>
+  <el-container class="app-container">
+    <Header />
+    <el-main class="app-main">
       <el-row>
         <el-col :span="24">
           <MarkdownRenderer :content="content" />
         </el-col>
       </el-row>
     </el-main>
+    <Footer />
   </el-container>
-  <Footer />
 </template>
 
 <script setup>
@@ -31,4 +31,14 @@ const read = async () => {
 
 onMounted(read)
 </script>
-<style scoped></style>
+<style scoped>
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+}
+</style>
