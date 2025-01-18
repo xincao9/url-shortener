@@ -70,10 +70,15 @@ const handleSelect = (key, keyPath) => {
             <el-menu-item index="2-3">项目仓库</el-menu-item>
           </el-sub-menu>
           <el-menu-item index="3" disabled>企业化服务</el-menu-item>
+          <el-menu-item index="4">登陆</el-menu-item>
         </el-menu>
       </el-col>
     </el-row>
   </el-header>
 </template>
 
-<style scoped></style>
+<style scoped>
+.el-menu--horizontal > .el-menu-item:nth-child(3) {
+  margin-right: auto;
+}
+</style>
