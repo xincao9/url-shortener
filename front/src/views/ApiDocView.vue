@@ -1,5 +1,5 @@
 <template>
-  <HeaderComponent />
+  <Header />
   <el-container>
     <el-main>
       <el-row>
@@ -9,15 +9,15 @@
       </el-row>
     </el-main>
   </el-container>
-  <FooterComponent />
+  <Footer />
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from '../plugins/axios'
 import MarkdownRenderer from '../components/MarkdownRenderer.vue'
-import HeaderComponent from '../components/HeaderComponent.vue'
-import FooterComponent from '../components/FooterComponent.vue'
+import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
 
 const content = ref('')
 

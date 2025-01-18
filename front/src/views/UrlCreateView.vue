@@ -3,9 +3,9 @@ import { computed, onMounted, ref } from 'vue'
 import axios from '../plugins/axios'
 import { useCreateHistoryStore } from '../stores/create-history'
 import { ElNotification } from 'element-plus'
-import HeaderComponent from '../components/HeaderComponent.vue'
-import StatisticsComponent from '../components/StatisticsComponent.vue'
-import FooterComponent from '../components/FooterComponent.vue'
+import Header from '../components/Header.vue'
+import Statistics from '../components/Statistics.vue'
+import Footer from '../components/Footer.vue'
 const createHistoryStore = useCreateHistoryStore()
 const { createHistory, add } = createHistoryStore
 
@@ -48,12 +48,12 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
 </script>
 
 <template>
-  <HeaderComponent />
+  <Header />
   <el-container>
     <el-main>
       <el-row>
         <el-col :span="24" style="background-color: aliceblue">
-          <StatisticsComponent />
+          <Statistics />
           <el-row style="text-align: center; margin-top: 40px">
             <el-col :span="8" :offset="8">
               <img style="width: 100px; height: 100px" src="@/assets/logo.svg" />
@@ -91,7 +91,7 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
       </el-row>
     </el-main>
   </el-container>
-  <FooterComponent />
+  <Footer />
 </template>
 
 <style scoped></style>
