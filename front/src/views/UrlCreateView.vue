@@ -98,10 +98,10 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the container takes up the full viewport height */
+  min-height: 100vh;
 }
 .app-main {
-  flex: 1; /* This makes the main content take up the remaining space */
-  overflow-y: auto; /* Enable scrolling if the content overflows */
+  flex: 1;
+  overflow-y: auto;
 }
 </style>
