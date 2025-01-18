@@ -52,7 +52,7 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
     <Header />
     <el-main class="app-main">
       <el-row>
-        <el-col :span="24" style="background-color: aliceblue">
+        <el-col :span="24">
           <Statistics />
           <el-row style="text-align: center; margin-top: 40px">
             <el-col :span="8" :offset="8">
@@ -99,6 +99,7 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: aliceblue;
 }
 .app-main {
   flex: 1;
