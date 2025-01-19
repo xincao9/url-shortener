@@ -16,7 +16,12 @@ Url.init(
       unique: true,
     },
   },
-  { sequelize, modelName: 'url' }
+  {
+    sequelize,
+    modelName: 'url',
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+  }
 )
 
 module.exports = Url

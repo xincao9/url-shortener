@@ -16,7 +16,12 @@ User.init(
       unique: true,
     },
   },
-  { sequelize, modelName: 'user' }
+  {
+    sequelize,
+    modelName: 'user',
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+  }
 )
 
 module.exports = User

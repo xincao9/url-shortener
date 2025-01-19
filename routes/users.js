@@ -28,14 +28,14 @@ router.post('/login', async (req, res) => {
 })
 
 function generateNumericCode(length) {
-  const digits = '0123456789';
-  let result = '';
-  const digitsLength = digits.length;
+  const digits = '0123456789'
+  let result = ''
+  const digitsLength = digits.length
   for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * digitsLength);
-    result += digits[randomIndex];
+    const randomIndex = Math.floor(Math.random() * digitsLength)
+    result += digits[randomIndex]
   }
-  return result;
+  return result
 }
 
 router.get('/vc/:cellphone', async (req, res) => {
