@@ -3,7 +3,7 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 const jwt = require('jsonwebtoken')
-const { RunConfig } = require('../config/config')
+const { RunConfig } = require('./config/config')
 
 var indexRouter = require('./routes/index')
 var urlsRouter = require('./routes/urls')
