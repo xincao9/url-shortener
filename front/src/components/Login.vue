@@ -29,6 +29,7 @@
 
 <script setup>
 import { defineEmits, ref } from 'vue'
+import axios from '../plugins/axios'
 
 const emit = defineEmits(['show:closed'])
 const props = defineProps({
@@ -53,19 +54,25 @@ const formRef = ref(null)
 const rules = {
   cellphone: [
     { required: true, message: '请输入手机号', trigger: 'blur' },
-    { min: 11, max: 11, message: '请输入正确手机号', trigger: ['blur', 'change'] },
+    { min: 11, max: 11, message: '请输入正确手机号', trigger: ['blur'] },
   ],
   verificationCode: [
     { required: true, message: '请输入验证码', trigger: 'blur' },
-    { min: 6, max: 6, message: '请输入正确验证码', trigger: ['blur', 'change'] },
+    { min: 6, max: 6, message: '请输入正确验证码', trigger: ['blur'] },
   ],
 }
 
-const login = () => {
+const login = async () => {
   const formRefValue = formRef.value
   formRefValue.validate((valid) => {
     if (valid) {
-      alert('提交成功!')
+      try {
+        console.log(form.value)
+        const resp = axios.post('/login', form.value)
+        console.log(resp)
+      } catch (error) {
+        console.log(error)
+      }
     } else {
       return false
     }
