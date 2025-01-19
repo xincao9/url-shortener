@@ -1,11 +1,13 @@
 <script setup>
 import { watch, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import Login from './Login.vue'
 
 const route = useRoute()
 const router = useRouter()
 
 const activeIndex = ref('')
+const dialogLoginVisible = ref(false)
 
 const currentIndex = (path) => {
   if (path === '/' || path === '') {
@@ -34,6 +36,10 @@ const handleSelect = (key, keyPath) => {
     window.open('https://github.com/xincao9/url-shortener', '_blank')
     return
   }
+  if (key == '4') {
+    dialogLoginVisible.value = true
+    return
+  }
   let name = ''
   if (key === '1') {
     name = 'url-create'
@@ -47,6 +53,9 @@ const handleSelect = (key, keyPath) => {
   } else {
     console.log(`No route defined for menu item with key: ${key}`)
   }
+}
+const closedDialogLoginVisible = () => {
+  dialogLoginVisible.value = false
 }
 </script>
 
@@ -76,6 +85,7 @@ const handleSelect = (key, keyPath) => {
       </el-col>
     </el-row>
   </el-header>
+  <Login :show="dialogLoginVisible" @show:closed="closedDialogLoginVisible" />
 </template>
 
 <style scoped>
