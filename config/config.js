@@ -13,6 +13,7 @@ const config = {
     redis: {
       url: 'redis://:@127.0.0.1:6379/0',
     },
+    jwtSecret: process.env.JWT_SECRET || 'development',
   },
 }
 

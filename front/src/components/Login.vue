@@ -68,7 +68,7 @@ const login = async () => {
     if (valid) {
       try {
         console.log(form.value)
-        const resp = axios.post('/login', form.value)
+        const resp = axios.post('/users/login', form.value)
         console.log(resp)
       } catch (error) {
         console.log(error)
