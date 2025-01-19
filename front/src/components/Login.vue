@@ -30,6 +30,7 @@
 <script setup>
 import { defineEmits, ref } from 'vue'
 import axios from '../plugins/axios'
+import Cookies from 'js-cookie'
 
 const emit = defineEmits(['show:closed'])
 const props = defineProps({
@@ -68,8 +69,10 @@ const login = async () => {
     if (valid) {
       try {
         console.log(form.value)
-        const resp = axios.post('/users/login', form.value)
-        console.log(resp)
+        const { token } = axios.post('/users/login', form.value)
+        if (token) {
+          Cookies.set('token', token, { expires: 7 })
+        }
       } catch (error) {
         console.log(error)
       }

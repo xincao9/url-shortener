@@ -16,7 +16,7 @@ router.post('/login', async (req, res) => {
       user = await User.create({ cellphone })
     }
     const token = jwt.sign({ user }, RunConfig.jwtSecret, { expiresIn: '7d' })
-    res.json({ token: 'success' })
+    res.json({ token })
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
