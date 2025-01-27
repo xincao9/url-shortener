@@ -1,18 +1,15 @@
-var express = require('express')
-var path = require('path')
-var cookieParser = require('cookie-parser')
-var logger = require('morgan')
+const express = require('express')
+const path = require('path')
+const cookieParser = require('cookie-parser')
+const logger = require('morgan')
 const jwt = require('jsonwebtoken')
 const { RunConfig } = require('./config/config')
-
-var indexRouter = require('./routes/index')
-var urlsRouter = require('./routes/urls')
-var statisticsRouter = require('./routes/statistics')
-var usersRouter = require('./routes/users')
-
+const indexRouter = require('./routes/index')
+const urlsRouter = require('./routes/urls')
+const statisticsRouter = require('./routes/statistics')
+const usersRouter = require('./routes/users')
 const cors = require('cors')
-
-var app = express()
+const app = express()
 
 const corsOptions = {
   origin: 'http://localhost:5173',

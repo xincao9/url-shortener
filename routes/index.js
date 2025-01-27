@@ -1,5 +1,5 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
 const { decode } = require('../utils/base62')
 const Url = require('../models/url')
 const { increment, keys } = require('../models/statistics')

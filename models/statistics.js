@@ -1,12 +1,10 @@
 const redis = require('../plugins/redis')
-
 const keys = [
   'statistics:visits',
   'statistics:usage',
   'statistics:success',
   'statistics:failures',
 ]
-
 const [visits, usage, success, failures] = keys
 
 const get = async () => {

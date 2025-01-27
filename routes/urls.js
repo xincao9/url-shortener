@@ -1,5 +1,5 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
 const Url = require('../models/url')
 const { RunConfig } = require('../config/config')
 const { encode } = require('../utils/base62')
