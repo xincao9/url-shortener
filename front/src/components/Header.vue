@@ -92,6 +92,10 @@ const closedDialogLoginVisible = () => {
             <el-menu-item index="2-1">grpc-pure</el-menu-item>
             <el-menu-item index="2-2">grpc-pure-spring-boot-starter</el-menu-item>
           </el-sub-menu>
+          <el-sub-menu index="3">
+            <template #title>go-lite框架</template>
+            <el-menu-item index="3-1">生成项目</el-menu-item>
+          </el-sub-menu>
           <el-menu-item index="3">登陆</el-menu-item>
         </el-menu>
       </el-col>
@@ -101,7 +105,7 @@ const closedDialogLoginVisible = () => {
 </template>
 
 <style scoped>
-.el-menu--horizontal > .el-sub-menu:nth-child(2) {
+.el-menu--horizontal > .el-sub-menu:nth-child(3) {
   margin-right: auto;
 }
 </style>
