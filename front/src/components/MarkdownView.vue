@@ -30,6 +30,10 @@ const read = async (path) => {
       url = '/md/api-doc.md'
     } else if (path == '/f/deploy') {
       url = '/md/deploy.md'
+    } else if (path == '/f/grpc-pure') {
+      url = '/md/grpc-pure.md'
+    } else if (path == '/f/grpc-pure-spring-boot-starter') {
+      url = '/md/grpc-pure-spring-boot-starter.md'
     }
     content.value = await axios.get(url)
   } catch (error) {

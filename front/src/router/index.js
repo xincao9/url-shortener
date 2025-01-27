@@ -20,6 +20,16 @@ const router = createRouter({
       name: 'deploy',
       component: MarkdownView,
     },
+    {
+      path: '/f/grpc-pure',
+      name: 'grpc-pure',
+      component: MarkdownView,
+    },
+    {
+      path: '/f/grpc-pure-spring-boot-starter',
+      name: 'grpc-pure-spring-boot-starter',
+      component: MarkdownView,
+    },
   ],
 })
 

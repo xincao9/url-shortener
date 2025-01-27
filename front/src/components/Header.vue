@@ -16,6 +16,10 @@ const currentIndex = (path) => {
     return '1-2'
   } else if (path === '/f/deploy') {
     return '1-3'
+  } else if (path === '/f/grpc-pure') {
+    return '2-1'
+  } else if (path === '/f/grpc-pure-spring-boot-starter') {
+    return '2-2'
   }
   return '1-1'
 }
@@ -47,6 +51,10 @@ const handleSelect = (key, keyPath) => {
     name = 'api-doc'
   } else if (key === '1-3') {
     name = 'deploy'
+  } else if (key === '2-1') {
+    name = 'grpc-pure'
+  } else if (key === '2-2') {
+    name = 'grpc-pure-spring-boot-starter'
   }
   if (name) {
     router.push({ name })
@@ -73,15 +81,16 @@ const closedDialogLoginVisible = () => {
           :ellipsis="false"
         >
           <el-sub-menu index="1">
-            <template #title>短链生成器</template>
+            <template #title>免费短链服务</template>
             <el-menu-item index="1-1">短链生成器</el-menu-item>
             <el-menu-item index="1-2">接口文档</el-menu-item>
             <el-menu-item index="1-3">私有化部署</el-menu-item>
             <el-menu-item index="1-4">项目仓库</el-menu-item>
           </el-sub-menu>
           <el-sub-menu index="2">
-            <template #title>Java Grpc-Pure</template>
-            <el-menu-item index="2-1">接口文档</el-menu-item>
+            <template #title>Java Grpc-Pure Jar</template>
+            <el-menu-item index="2-1">grpc-pure</el-menu-item>
+            <el-menu-item index="2-2">grpc-pure-spring-boot-starter</el-menu-item>
           </el-sub-menu>
           <el-menu-item index="3">登陆</el-menu-item>
         </el-menu>
