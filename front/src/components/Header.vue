@@ -11,13 +11,13 @@ const dialogLoginVisible = ref(false)
 
 const currentIndex = (path) => {
   if (path === '/' || path === '') {
-    return '1'
+    return '1-1'
   } else if (path === '/f/api-doc') {
-    return '2-1'
+    return '1-2'
   } else if (path === '/f/deploy') {
-    return '2-2'
+    return '1-3'
   }
-  return '1'
+  return '1-1'
 }
 
 onMounted(() => {
@@ -32,20 +32,20 @@ watch(
 )
 
 const handleSelect = (key, keyPath) => {
-  if (key === '2-3') {
+  if (key === '1-4') {
     window.open('https://github.com/xincao9/url-shortener', '_blank')
     return
   }
-  if (key == '4') {
+  if (key == '3') {
     dialogLoginVisible.value = true
     return
   }
   let name = ''
-  if (key === '1') {
+  if (key === '1-1') {
     name = 'url-create'
-  } else if (key === '2-1') {
+  } else if (key === '1-2') {
     name = 'api-doc'
-  } else if (key === '2-2') {
+  } else if (key === '1-3') {
     name = 'deploy'
   }
   if (name) {
@@ -72,15 +72,18 @@ const closedDialogLoginVisible = () => {
           active-text-color="#ffd04b"
           :ellipsis="false"
         >
-          <el-menu-item index="1">短链生成器</el-menu-item>
-          <el-sub-menu index="2">
-            <template #title>接口说明</template>
-            <el-menu-item index="2-1">接口文档</el-menu-item>
-            <el-menu-item index="2-2">私有化部署</el-menu-item>
-            <el-menu-item index="2-3">项目仓库</el-menu-item>
+          <el-sub-menu index="1">
+            <template #title>短链生成器</template>
+            <el-menu-item index="1-1">短链生成器</el-menu-item>
+            <el-menu-item index="1-2">接口文档</el-menu-item>
+            <el-menu-item index="1-3">私有化部署</el-menu-item>
+            <el-menu-item index="1-4">项目仓库</el-menu-item>
           </el-sub-menu>
-          <el-menu-item index="3" disabled>企业化服务</el-menu-item>
-          <el-menu-item index="4">登陆</el-menu-item>
+          <el-sub-menu index="2">
+            <template #title>grpc-pure</template>
+            <el-menu-item index="2-1">接口文档</el-menu-item>
+          </el-sub-menu>
+          <el-menu-item index="3">登陆</el-menu-item>
         </el-menu>
       </el-col>
     </el-row>
@@ -89,7 +92,7 @@ const closedDialogLoginVisible = () => {
 </template>
 
 <style scoped>
-.el-menu--horizontal > .el-menu-item:nth-child(3) {
+.el-menu--horizontal > .el-menu-item:nth-child(2) {
   margin-right: auto;
 }
 </style>
