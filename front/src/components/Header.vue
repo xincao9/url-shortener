@@ -80,7 +80,7 @@ const closedDialogLoginVisible = () => {
             <el-menu-item index="1-4">项目仓库</el-menu-item>
           </el-sub-menu>
           <el-sub-menu index="2">
-            <template #title>grpc-pure</template>
+            <template #title>Java Grpc-Pure</template>
             <el-menu-item index="2-1">接口文档</el-menu-item>
           </el-sub-menu>
           <el-menu-item index="3">登陆</el-menu-item>
@@ -92,7 +92,7 @@ const closedDialogLoginVisible = () => {
 </template>
 
 <style scoped>
-.el-menu--horizontal > .el-menu-item:nth-child(2) {
+.el-menu--horizontal > .el-sub-menu:nth-child(2) {
   margin-right: auto;
 }
 </style>
