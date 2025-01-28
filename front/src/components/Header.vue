@@ -102,7 +102,7 @@ const closedDialogLoginVisible = () => {
             <el-menu-item index="2-3">infra-bom</el-menu-item>
             <el-menu-item index="2-4">infra-trace</el-menu-item>
           </el-sub-menu>
-          <el-sub-menu index="3">
+          <el-sub-menu index="3" disabled>
             <template #title>go-lite框架</template>
             <el-menu-item index="3-1">生成项目</el-menu-item>
           </el-sub-menu>
