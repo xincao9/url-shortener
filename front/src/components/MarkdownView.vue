@@ -34,6 +34,10 @@ const read = async (path) => {
       url = '/md/grpc-pure.md'
     } else if (path == '/f/grpc-pure-spring-boot-starter') {
       url = '/md/grpc-pure-spring-boot-starter.md'
+    } else if (path == '/f/infra-bom') {
+      url = '/md/infra-bom.md'
+    } else if (path == '/f/infra-trace') {
+      url = '/md/infra-trace.md'
     }
     content.value = await axios.get(url)
   } catch (error) {

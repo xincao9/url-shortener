@@ -30,6 +30,16 @@ const router = createRouter({
       name: 'grpc-pure-spring-boot-starter',
       component: MarkdownView,
     },
+    {
+      path: '/f/infra-bom',
+      name: 'infra-bom',
+      component: MarkdownView,
+    },
+    {
+      path: '/f/infra-trace',
+      name: 'infra-trace',
+      component: MarkdownView,
+    },
   ],
 })
 

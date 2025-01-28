@@ -20,6 +20,10 @@ const currentIndex = (path) => {
     return '2-1'
   } else if (path === '/f/grpc-pure-spring-boot-starter') {
     return '2-2'
+  } else if (path === '/f/infra-bom') {
+    return '2-3'
+  } else if (path === '/f/infra-trace') {
+    return '2-4'
   }
   return '1-1'
 }
@@ -55,6 +59,10 @@ const handleSelect = (key, keyPath) => {
     name = 'grpc-pure'
   } else if (key === '2-2') {
     name = 'grpc-pure-spring-boot-starter'
+  } else if (key === '2-3') {
+    name = 'infra-bom'
+  } else if (key === '2-4') {
+    name = 'infra-trace'
   }
   if (name) {
     router.push({ name })
@@ -88,9 +96,11 @@ const closedDialogLoginVisible = () => {
             <el-menu-item index="1-4">项目仓库</el-menu-item>
           </el-sub-menu>
           <el-sub-menu index="2">
-            <template #title>Java Grpc-Pure Jar</template>
+            <template #title>Java Infra Framework</template>
             <el-menu-item index="2-1">grpc-pure</el-menu-item>
             <el-menu-item index="2-2">grpc-pure-spring-boot-starter</el-menu-item>
+            <el-menu-item index="2-3">infra-bom</el-menu-item>
+            <el-menu-item index="2-4">infra-trace</el-menu-item>
           </el-sub-menu>
           <el-sub-menu index="3">
             <template #title>go-lite框架</template>
