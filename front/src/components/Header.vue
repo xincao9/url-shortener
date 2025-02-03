@@ -90,23 +90,23 @@ const closedDialogLoginVisible = () => {
         >
           <el-sub-menu index="1">
             <template #title>免费短链服务</template>
-            <el-menu-item index="1-1">短链生成器</el-menu-item>
-            <el-menu-item index="1-2">接口文档</el-menu-item>
-            <el-menu-item index="1-3">私有化部署</el-menu-item>
-            <el-menu-item index="1-4">项目仓库</el-menu-item>
+            <el-menu-item index="1-1">🚳 短链生成器</el-menu-item>
+            <el-menu-item index="1-2">🚭️ 接口文档</el-menu-item>
+            <el-menu-item index="1-3">🔞 私有化部署</el-menu-item>
+            <el-menu-item index="1-4">🚱 代码仓库</el-menu-item>
           </el-sub-menu>
           <el-sub-menu index="2">
             <template #title>Java Infra Framework</template>
-            <el-menu-item index="2-1">grpc-pure</el-menu-item>
-            <el-menu-item index="2-2">grpc-pure-spring-boot-starter</el-menu-item>
-            <el-menu-item index="2-3">infra-config</el-menu-item>
-            <el-menu-item index="2-4">infra-trace</el-menu-item>
+            <el-menu-item index="2-1">✖️ grpc-pure</el-menu-item>
+            <el-menu-item index="2-2">➕️ grpc-pure-spring-boot-starter</el-menu-item>
+            <el-menu-item index="2-3">➖️ infra-config</el-menu-item>
+            <el-menu-item index="2-4">➗️ infra-trace</el-menu-item>
           </el-sub-menu>
           <el-sub-menu index="3" disabled>
             <template #title>go-lite框架</template>
             <el-menu-item index="3-1">生成项目</el-menu-item>
           </el-sub-menu>
-          <el-menu-item index="3">登陆</el-menu-item>
+          <el-menu-item index="3">👵 登陆</el-menu-item>
         </el-menu>
       </el-col>
     </el-row>
