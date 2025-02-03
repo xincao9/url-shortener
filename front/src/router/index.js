@@ -31,8 +31,8 @@ const router = createRouter({
       component: MarkdownView,
     },
     {
-      path: '/f/infra-bom',
-      name: 'infra-bom',
+      path: '/f/infra-config',
+      name: 'infra-config',
       component: MarkdownView,
     },
     {
