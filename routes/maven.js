@@ -37,8 +37,9 @@ router.get('/download/:id', async (req, res) => {
     res.status(400).json({ error: 'Missing required fields' })
     return
   }
+  let value = ''
   try {
-    const value = await redis.get(id)
+    value = await redis.get(id)
     if (!value) {
       res.status(400).json({ error: 'Parameter error' })
     }
