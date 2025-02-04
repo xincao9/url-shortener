@@ -23,7 +23,7 @@ router.post('/generate', async (req, res) => {
     return
   }
   process.chdir(dataDir)
-  const command = `mvn archetype:generate -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -DarchetypeArtifactId=sample-archetype -DarchetypeGroupId=com.github.xincao9.archetype -DinteractiveMode=false`
+  const command = `/usr/local/maven/bin/mvn archetype:generate -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -DarchetypeArtifactId=sample-archetype -DarchetypeGroupId=com.github.xincao9.archetype -DinteractiveMode=false`
   exec(command, async (error, stdout, stderr) => {
     if (error) {
       return res.status(500).send({ error: error.message })
