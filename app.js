@@ -8,6 +8,8 @@ const indexRouter = require('./routes/index')
 const urlsRouter = require('./routes/urls')
 const statisticsRouter = require('./routes/statistics')
 const usersRouter = require('./routes/users')
+const mavenRouter = require('./routes/maven')
+
 const cors = require('cors')
 const app = express()
 
@@ -48,5 +50,6 @@ app.use('/s', indexRouter)
 app.use('/urls', urlsRouter)
 app.use('/statistics', statisticsRouter)
 app.use('/users', usersRouter)
+app.use('/maven', mavenRouter)
 
 module.exports = app
