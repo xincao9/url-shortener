@@ -23,7 +23,7 @@ router.post('/generate', async (req, res) => {
     }
     const id = uuidv4()
     try {
-      await redis.set(id, req.body)
+      await redis.set(id, JSON.stringify(req.body))
     } catch (e) {
       return res.status(500).send({ error: err.message })
     }
@@ -45,7 +45,7 @@ router.get('/download/:id', async (req, res) => {
   } catch (err) {
     return res.status(500).send({ error: err.message })
   }
-  const { artifactId, version } = value
+  const { artifactId, version } = JSON.parse(value)
   const zipname = `${artifactId}-${version}.zip`
   const output = fs.createWriteStream(zipname)
   const archive = archiver('zip', {
