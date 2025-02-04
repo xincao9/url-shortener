@@ -70,7 +70,9 @@ const submit = async () => {
     if (valid) {
       try {
         console.log(form.value)
-        const { id } = axios.post('/maven/generate', form.value)
+        const data = axios.post('/maven/generate', form.value)
+        const { id } = JSON.parse(data)
+        console.log(`/maven/download/${id}`)
         if (id) {
           window.open(`/maven/download/${id}`, '_blank')
         }
@@ -81,15 +83,6 @@ const submit = async () => {
       return false
     }
   })
-}
-
-function downloadFile(url, artifactId) {
-  const a = document.createElement('a')
-  a.href = url
-  a.download = `${artifactId}.zip`
-  document.body.appendChild(a)
-  a.click()
-  document.body.removeChild(a)
 }
 </script>
 
