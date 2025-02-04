@@ -2,12 +2,14 @@
 import { watch, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Login from './Login.vue'
+import MavenProjectCreate from './MavenProjectCreate.vue'
 
 const route = useRoute()
 const router = useRouter()
 
 const activeIndex = ref('')
-const dialogLoginVisible = ref(false)
+const loginVisible = ref(false)
+const mavenVisible = ref(false)
 
 const currentIndex = (path) => {
   if (path === '/' || path === '') {
@@ -44,8 +46,12 @@ const handleSelect = (key, keyPath) => {
     window.open('https://github.com/xincao9/url-shortener', '_blank')
     return
   }
-  if (key == '3') {
-    dialogLoginVisible.value = true
+  if (key == '4') {
+    mavenVisible.value = true
+    return
+  }
+  if (key == '5') {
+    loginVisible.value = true
     return
   }
   let name = ''
@@ -70,8 +76,11 @@ const handleSelect = (key, keyPath) => {
     console.log(`No route defined for menu item with key: ${key}`)
   }
 }
-const closedDialogLoginVisible = () => {
-  dialogLoginVisible.value = false
+const closedLoginVisible = () => {
+  loginVisible.value = false
+}
+const closedMavenVisible = () => {
+  mavenVisible.value = false
 }
 </script>
 
@@ -106,12 +115,14 @@ const closedDialogLoginVisible = () => {
             <template #title>go-lite框架</template>
             <el-menu-item index="3-1">生成项目</el-menu-item>
           </el-sub-menu>
-          <el-menu-item index="3">👵 登陆</el-menu-item>
+          <el-menu-item index="4">🐘 Infra Starter</el-menu-item>
+          <el-menu-item index="5" disabled>👵 登陆</el-menu-item>
         </el-menu>
       </el-col>
     </el-row>
   </el-header>
-  <Login :show="dialogLoginVisible" @show:closed="closedDialogLoginVisible" />
+  <MavenProjectCreate :show="mavenVisible" @show:closed="closedMavenVisible" />
+  <Login :show="loginVisible" @show:closed="closedLoginVisible" />
 </template>
 
 <style scoped>
