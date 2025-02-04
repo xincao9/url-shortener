@@ -72,7 +72,7 @@ const submit = async () => {
         console.log(form.value)
         const { id } = axios.post('/maven/generate', form.value)
         if (id) {
-          downloadFile(`/maven/download/${id}`, form.value.artifactId)
+          window.open(`/maven/download/${id}`, '_blank')
         }
       } catch (error) {
         console.log(error)
