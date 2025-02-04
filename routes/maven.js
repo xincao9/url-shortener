@@ -31,7 +31,7 @@ router.post('/generate', async (req, res) => {
   })
 })
 
-router.get('/download', async (req, res) => {
+router.get('/download/:id', async (req, res) => {
   let { id } = req.params
   if (!id) {
     res.status(400).json({ error: 'Missing required fields' })
