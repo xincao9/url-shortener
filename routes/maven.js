@@ -61,7 +61,7 @@ router.get('/download/:id', async (req, res) => {
     res.status(400).json({ error: 'Parameter error' })
   }
   const { artifactId } = JSON.parse(value)
-  const zipname = path.join(dataDir, `${artifactId}.zip`)
+  const zipname = path.join(dataDir, `${artifactId}-${id}.zip`)
   const output = fs.createWriteStream(zipname)
   const archive = archiver('zip', {
     zlib: { level: 9 }, // 设置压缩级别
