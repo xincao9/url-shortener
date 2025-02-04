@@ -1,6 +1,6 @@
 <template>
   <div
-    style="background-color: rgb(253, 225.6, 225.6); padding: 10px 50px"
+    style="background-color: rgb(237, 238, 245); padding: 10px 50px"
     v-html="compiledMarkdown"
   ></div>
 </template>
