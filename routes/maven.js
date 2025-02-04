@@ -6,6 +6,9 @@ const fs = require('fs')
 const path = require('path')
 const { v4: uuidv4 } = require('uuid')
 const redis = require('../plugins/redis')
+const os = require('os')
+
+const homeDir = os.homedir()
 
 router.post('/generate', async (req, res) => {
   let { groupId, artifactId, version } = req.body
@@ -13,6 +16,7 @@ router.post('/generate', async (req, res) => {
     res.status(400).json({ error: 'Missing required fields' })
     return
   }
+  process.chdir(homeDir)
   const command = `mvn archetype:generate -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -DarchetypeArtifactId=sample-archetype -DarchetypeGroupId=com.github.xincao9.archetype -DinteractiveMode=false`
   exec(command, async (error, stdout, stderr) => {
     if (error) {
@@ -47,7 +51,7 @@ router.get('/download/:id', async (req, res) => {
     res.status(400).json({ error: 'Parameter error' })
   }
   const { artifactId } = JSON.parse(value)
-  const zipname = `${artifactId}.zip`
+  const zipname = path.join(homeDir, `${artifactId}.zip`)
   const output = fs.createWriteStream(zipname)
   const archive = archiver('zip', {
     zlib: { level: 9 }, // 设置压缩级别
@@ -60,7 +64,7 @@ router.get('/download/:id', async (req, res) => {
   archive.on('error', (err) => {
     return res.status(500).send({ error: err.message })
   })
-  const outputPath = path.join(__dirname, artifactId)
+  const outputPath = path.join(homeDir, artifactId)
   console.log('outputPath:', outputPath)
   if (fs.existsSync(outputPath)) {
     archive.pipe(output)
