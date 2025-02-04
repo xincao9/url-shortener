@@ -65,4 +65,9 @@ watch(
   flex: 1;
   overflow-y: auto;
 }
+
+.el-main {
+  padding: 0px 20px;
+  margin: 0px;
+}
 </style>
