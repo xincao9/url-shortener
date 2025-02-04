@@ -7,15 +7,13 @@ const path = require('path')
 const { v4: uuidv4 } = require('uuid')
 const redis = require('../plugins/redis')
 
-const mcf = `mvn archetype:generate -DgroupId=${project} -DartifactId=${artifactId} -Dversion=${version} -DarchetypeArtifactId=sample-archetype -DarchetypeGroupId=com.github.xincao9.archetype -DinteractiveMode=false`
-
 router.post('/generate', async (req, res) => {
-  let { project, artifactId, version } = req.body
-  if (!project || !artifactId || !version) {
+  let { groupId, artifactId, version } = req.body
+  if (!groupId || !artifactId || !version) {
     res.status(400).json({ error: 'Missing required fields' })
     return
   }
-  const command = mcf
+  const command = `mvn archetype:generate -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -DarchetypeArtifactId=sample-archetype -DarchetypeGroupId=com.github.xincao9.archetype -DinteractiveMode=false`
   exec(command, async (error, stdout, stderr) => {
     if (error) {
       return res.status(500).send({ error: error.message })
@@ -47,8 +45,8 @@ router.get('/download', async (req, res) => {
   } catch (err) {
     return res.status(500).send({ error: err.message })
   }
-  const { project, artifactId, version } = value
-  const zipname = `${project}-${version}.zip`
+  const { artifactId, version } = value
+  const zipname = `${artifactId}-${version}.zip`
   const output = fs.createWriteStream(zipname)
   const archive = archiver('zip', {
     zlib: { level: 9 }, // 设置压缩级别
