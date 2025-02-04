@@ -97,9 +97,9 @@ const closedDialogLoginVisible = () => {
           </el-sub-menu>
           <el-sub-menu index="2">
             <template #title>Java Infra Framework</template>
-            <el-menu-item index="2-1">✖️ grpc-pure</el-menu-item>
-            <el-menu-item index="2-2">➕️ grpc-pure-spring-boot-starter</el-menu-item>
-            <el-menu-item index="2-3">➖️ infra-config</el-menu-item>
+            <el-menu-item index="2-1">➕️ grpc-pure</el-menu-item>
+            <el-menu-item index="2-2">➖️ grpc-pure-spring-boot-starter</el-menu-item>
+            <el-menu-item index="2-3">✖️ infra-config</el-menu-item>
             <el-menu-item index="2-4">➗️ infra-trace</el-menu-item>
           </el-sub-menu>
           <el-sub-menu index="3" disabled>
