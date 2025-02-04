@@ -34,6 +34,10 @@ router.post('/generate', async (req, res) => {
     const id = uuidv4()
     try {
       await redis.set(id, JSON.stringify({ groupId, artifactId, version }))
+      fs.renameSync(
+        path.join(dataDir, artifactId),
+        path.join(dataDir, `${artifactId}-${id}`)
+      )
     } catch (e) {
       return res.status(500).send({ error: err.message })
     }
@@ -70,7 +74,7 @@ router.get('/download/:id', async (req, res) => {
   archive.on('error', (err) => {
     return res.status(500).send({ error: err.message })
   })
-  const outputPath = path.join(dataDir, artifactId)
+  const outputPath = path.join(dataDir, `${artifactId}-${id}`)
   console.log('outputPath:', outputPath)
   if (fs.existsSync(outputPath)) {
     archive.pipe(output)
