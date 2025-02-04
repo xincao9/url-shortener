@@ -72,7 +72,7 @@ const submit = async () => {
         const data = await axios.post('/maven/generate', form.value)
         const { id } = data
         if (id) {
-          window.open(`http://localhost:3000/maven/download/${id}`, '_blank')
+          window.open(`https://golinks.fun/maven/download/${id}`, '_blank')
           form.value.groupId = ''
           form.value.artifactId = ''
           form.value.version = ''
