@@ -10,18 +10,18 @@
   >
     <el-form :model="form" :rules="rules" ref="formRef" label-width="auto">
       <el-form-item prop="cellphone">
-        <el-input v-model="form.cellphone" placeholder="请输入中国大陆手机号" />
-        <template #prepend>🦁+86</template>
+        <el-input v-model="form.cellphone" placeholder="🦁 请输入中国大陆手机号" />
+        <template #prepend>+86</template>
       </el-form-item>
       <el-form-item prop="verificationCode">
-        <el-input v-model="form.verificationCode" placeholder="请输入6位验证码">
-          <template #append><el-link type="warning">🐕️获取验证码</el-link></template>
+        <el-input v-model="form.verificationCode" placeholder="🦊 请输入6位验证码">
+          <template #append><el-link type="warning">🐕️ 获取验证码</el-link></template>
         </el-input>
       </el-form-item>
     </el-form>
     <template #footer>
       <div class="dialog-footer">
-        <el-button type="success" round @click="login">🐅登陆/注册</el-button>
+        <el-button type="success" round @click="login">🐅 登陆/注册</el-button>
       </div>
     </template>
   </el-dialog>
