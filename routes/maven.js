@@ -46,7 +46,6 @@ router.get('/download/:id', async (req, res) => {
   if (!value) {
     res.status(400).json({ error: 'Parameter error' })
   }
-  console.log('value:', value)
   const { artifactId } = JSON.parse(value)
   const zipname = `${artifactId}.zip`
   const output = fs.createWriteStream(zipname)
@@ -61,9 +60,14 @@ router.get('/download/:id', async (req, res) => {
   archive.on('error', (err) => {
     return res.status(500).send({ error: err.message })
   })
-
-  archive.pipe(output)
-  archive.directory(path.join(__dirname, artifactId), false)
-  archive.finalize()
+  const outputPath = path.join(__dirname, artifactId)
+  console.log('outputPath:', outputPath)
+  if (fs.existsSync(outputPath)) {
+    archive.pipe(output)
+    archive.directory(outputPath, false)
+    archive.finalize()
+  } else {
+    res.status(500).send({ error: `${outputPath} don't exists` })
+  }
 })
 module.exports = router
