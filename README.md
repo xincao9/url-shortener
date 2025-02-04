@@ -5,3 +5,15 @@
 ## Installation instructions
 
 [https://golinks.fun/f/deploy](https://golinks.fun/f/deploy)
+
+```bash
+curl -X POST -H 'content-type:application/json' 'http://localhost:3000/maven/generate' -d '{
+    "groupId": "com.xincao",
+    "artifactId": "demo",
+    "version": "1.0.0-SNAPSHOT"
+}' | jq .id
+```
+
+```bash
+brower 'http://localhost:3000/maven/download/{id}'
+```

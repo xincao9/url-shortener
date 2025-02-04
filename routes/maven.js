@@ -23,7 +23,7 @@ router.post('/generate', async (req, res) => {
     }
     const id = uuidv4()
     try {
-      await redis.set(id, JSON.stringify(req.body))
+      await redis.set(id, JSON.stringify({ groupId, artifactId, version }))
     } catch (e) {
       return res.status(500).send({ error: err.message })
     }
@@ -40,14 +40,15 @@ router.get('/download/:id', async (req, res) => {
   let value = ''
   try {
     value = await redis.get(id)
-    if (!value) {
-      res.status(400).json({ error: 'Parameter error' })
-    }
   } catch (err) {
     return res.status(500).send({ error: err.message })
   }
-  const { artifactId, version } = JSON.parse(value)
-  const zipname = `${artifactId}-${version}.zip`
+  if (!value) {
+    res.status(400).json({ error: 'Parameter error' })
+  }
+  console.log('value:', value)
+  const { artifactId } = JSON.parse(value)
+  const zipname = `${artifactId}.zip`
   const output = fs.createWriteStream(zipname)
   const archive = archiver('zip', {
     zlib: { level: 9 }, // 设置压缩级别
