@@ -66,15 +66,15 @@ const rules = {
 
 const submit = async () => {
   const formRefValue = formRef.value
-  formRefValue.validate((valid) => {
+  formRefValue.validate(async (valid) => {
     if (valid) {
       try {
-        console.log(form.value)
-        const data = axios.post('/maven/generate', form.value)
-        const { id } = JSON.parse(data)
-        console.log(`/maven/download/${id}`)
+        const { id } = await axios.post('/maven/generate', form.value)
         if (id) {
           window.open(`/maven/download/${id}`, '_blank')
+          form.value.groupId = ''
+          form.value.artifactId = ''
+          form.value.version = ''
         }
       } catch (error) {
         console.log(error)
