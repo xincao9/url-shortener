@@ -24,24 +24,25 @@ router.post('/generate', async (req, res) => {
   }
   process.chdir(dataDir)
   const command = `/usr/local/maven/bin/mvn archetype:generate -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -DarchetypeArtifactId=sample-archetype -DarchetypeGroupId=com.github.xincao9.archetype -DinteractiveMode=false`
+  const id = uuidv4()
+  res.send({ id })
   exec(command, async (error, stdout, stderr) => {
     if (error) {
-      return res.status(500).send({ error: error.message })
+      console.error({ error: error.message })
     }
     if (stderr) {
-      return res.status(500).send({ error: stderr.message })
+      console.error({ error: stderr.message })
     }
-    const id = uuidv4()
     try {
       await redis.set(id, JSON.stringify({ groupId, artifactId, version }))
       fs.renameSync(
         path.join(dataDir, artifactId),
         path.join(dataDir, `${artifactId}-${id}`)
       )
-    } catch (e) {
-      return res.status(500).send({ error: err.message })
+    } catch (err) {
+      console.error({ error: err.message })
     }
-    res.send({ stdout, id: id })
+    console.log(console)
   })
 })
 
