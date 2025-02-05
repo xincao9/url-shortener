@@ -27,10 +27,6 @@ router.post('/generate', async (req, res) => {
   const id = uuidv4()
   try {
     await redis.set(id, JSON.stringify({ groupId, artifactId, version }))
-    fs.renameSync(
-      path.join(dataDir, artifactId),
-      path.join(dataDir, `${artifactId}-${id}`)
-    )
   } catch (err) {
     console.error({ error: err.message })
   }
@@ -41,6 +37,14 @@ router.post('/generate', async (req, res) => {
     }
     if (stderr) {
       console.error({ error: stderr.message })
+    }
+    try {
+      fs.renameSync(
+        path.join(dataDir, artifactId),
+        path.join(dataDir, `${artifactId}-${id}`)
+      )
+    } catch (err) {
+      console.error({ error: err.message })
     }
     console.log(console)
   })
