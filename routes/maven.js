@@ -25,6 +25,15 @@ router.post('/generate', async (req, res) => {
   process.chdir(dataDir)
   const command = `/usr/local/maven/bin/mvn archetype:generate -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -DarchetypeArtifactId=sample-archetype -DarchetypeGroupId=com.github.xincao9.archetype -DinteractiveMode=false`
   const id = uuidv4()
+  try {
+    await redis.set(id, JSON.stringify({ groupId, artifactId, version }))
+    fs.renameSync(
+      path.join(dataDir, artifactId),
+      path.join(dataDir, `${artifactId}-${id}`)
+    )
+  } catch (err) {
+    console.error({ error: err.message })
+  }
   res.send({ id })
   exec(command, async (error, stdout, stderr) => {
     if (error) {
@@ -32,15 +41,6 @@ router.post('/generate', async (req, res) => {
     }
     if (stderr) {
       console.error({ error: stderr.message })
-    }
-    try {
-      await redis.set(id, JSON.stringify({ groupId, artifactId, version }))
-      fs.renameSync(
-        path.join(dataDir, artifactId),
-        path.join(dataDir, `${artifactId}-${id}`)
-      )
-    } catch (err) {
-      console.error({ error: err.message })
     }
     console.log(console)
   })
@@ -62,6 +62,14 @@ router.get('/download/:id', async (req, res) => {
     res.status(400).json({ error: 'Parameter error' })
   }
   const { artifactId } = JSON.parse(value)
+  const outputPath = path.join(dataDir, `${artifactId}-${id}`)
+
+  if (!fs.existsSync(outputPath)) {
+    return res.send({
+      message: 'Generating, please use this link to download later',
+    })
+  }
+
   const zipname = path.join(dataDir, `${artifactId}-${id}.zip`)
   const output = fs.createWriteStream(zipname)
   const archive = archiver('zip', {
@@ -75,14 +83,9 @@ router.get('/download/:id', async (req, res) => {
   archive.on('error', (err) => {
     return res.status(500).send({ error: err.message })
   })
-  const outputPath = path.join(dataDir, `${artifactId}-${id}`)
-  console.log('outputPath:', outputPath)
-  if (fs.existsSync(outputPath)) {
-    archive.pipe(output)
-    archive.directory(outputPath, false)
-    archive.finalize()
-  } else {
-    res.status(500).send({ error: `${outputPath} don't exists` })
-  }
+
+  archive.pipe(output)
+  archive.directory(outputPath, false)
+  archive.finalize()
 })
 module.exports = router
