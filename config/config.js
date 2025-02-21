@@ -4,7 +4,7 @@ const config = {
   development: {
     mysql: {
       username: 'root',
-      password: 'asdf',
+      password: '',
       database: 'url_shortener',
       host: '127.0.0.1',
       dialect: 'mysql',

@@ -2,7 +2,7 @@ CREATE
 DATABASE `url_shortener`
 /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE 'url_shortener';
+USE `url_shortener`;
 
 CREATE TABLE `urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

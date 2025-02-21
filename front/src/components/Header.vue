@@ -41,16 +41,16 @@ watch(
   },
 )
 
-const handleSelect = (key, keyPath) => {
+const handleSelect = (key) => {
   if (key === '1-4') {
     window.open('https://github.com/xincao9/url-shortener', '_blank')
     return
   }
-  if (key == '4') {
+  if (key === '4') {
     mavenVisible.value = true
     return
   }
-  if (key == '5') {
+  if (key === '5') {
     loginVisible.value = true
     return
   }

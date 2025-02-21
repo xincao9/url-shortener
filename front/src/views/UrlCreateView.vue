@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import axios from '../plugins/axios'
 import { useCreateHistoryStore } from '../stores/create-history'
 import { ElNotification } from 'element-plus'
@@ -56,7 +56,7 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
           <Statistics />
           <el-row style="text-align: center; margin-top: 40px">
             <el-col :span="8" :offset="8">
-              <img style="width: 100px; height: 100px" src="@/assets/logo.svg" />
+              <img style="width: 100px; height: 100px" src="@/assets/logo.svg"  alt=""/>
             </el-col>
           </el-row>
           <el-row style="margin-top: 20px">
@@ -99,7 +99,6 @@ const notification = ({ title = '提醒', message = '信息', type = 'warning' }
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: aliceblue;
 }
 .app-main {
   flex: 1;
